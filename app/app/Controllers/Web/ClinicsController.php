@@ -23,9 +23,15 @@ class ClinicsController extends BaseController
             return redirect()->to('/login');
         }
 
-        echo '<pre>';
-        var_dump($session->get());
+        // echo '<pre>';
+        // var_dump($user_logged);
+        // die;
 
-        $session->remove('user_logged');
+        $data = [
+            'title' => $this->title,
+            'user_name' => ucfirst(explode(' ', $user_logged['user_name'])[0])
+        ];
+
+        return view('clinic', $data);
     }
 }
